@@ -1,0 +1,12 @@
+.venv/
+.deps/
+__pycache__/
+.pytest_cache/
+*.pyc
+runs/
+outputs/
+*.mp4
+.env
+credentials*
+*.pem
+.cache/

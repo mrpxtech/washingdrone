@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Window washing drone replay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <p class="eyebrow">Portable replay bundle</p>
+      <h1>Estimated spray coverage</h1>
+    </div>
+    <div class="identity">
+      <span id="scenario-badge">No run loaded</span>
+      <span id="run-badge">Run —</span>
+      <span id="status-badge" class="completed">replay</span>
+    </div>
+  </header>
+  <main>
+    <section class="stage">
+      <canvas id="view"></canvas>
+      <p class="replay-tag">Trajectory replay of recorded MuJoCo states</p>
+    </section>
+    <aside>
+      <section class="panel physics">
+        <h2>New physics run</h2>
+        <p class="note">This bundle only replays recorded runs. Start the VM dashboard to launch MuJoCo.</p>
+        <button id="launch" type="button" disabled>Run simulation</button>
+        <p id="job-note" class="note"></p>
+      </section>
+      <section class="panel">
+        <h2>Recorded runs</h2>
+        <label for="run-select">Selected run</label>
+        <select id="run-select"></select>
+      </section>
+      <section class="cards" id="cards"></section>
+    </aside>
+  </main>
+  <section class="replay panel">
+    <div class="replay-head">
+      <h2>Trajectory replay</h2>
+      <p>These controls only move through the selected recording.</p>
+    </div>
+    <div class="transport">
+      <button id="play" type="button">Play</button>
+      <button id="pause" type="button">Pause</button>
+      <button id="reset" type="button">Reset</button>
+      <label>Speed
+        <select id="speed">
+          <option value="0.5">0.5×</option>
+          <option value="1" selected>1×</option>
+          <option value="2">2×</option>
+          <option value="4">4×</option>
+        </select>
+      </label>
+      <input id="scrub" type="range" min="0" max="0" value="0">
+      <span id="clock">0.0 s</span>
+    </div>
+  </section>
+  <section class="charts">
+    <figure>
+      <figcaption>Final estimated spray coverage</figcaption>
+      <canvas id="heat" width="640" height="480"></canvas>
+    </figure>
+    <figure>
+      <figcaption>Position tracking error</figcaption>
+      <canvas id="track" width="640" height="480"></canvas>
+    </figure>
+  </section>
+  <script>window.WASH_MODE = "bundle";</script>
+  <script src="vendor/three.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
